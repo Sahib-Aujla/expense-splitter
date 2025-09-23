@@ -1,0 +1,38 @@
+# Node.js / pnpm (Next.js app)
+app/node_modules/
+app/.next/
+app/out/
+app/pnpm-lock.yaml
+app/.env
+app/.env.local
+app/.env.*.local
+app/.vercel/
+app/coverage/
+app/.cache/
+app/next-env.d.ts
+
+# Foundry (web3)
+web3/out/
+web3/cache/
+web3/.forge-snapshots/
+web3/broadcast/
+web3/.env
+
+# Environment variables (root-level, if any)
+.env
+.env.local
+.env.*.local
+
+# General
+*.log
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+*.tgz
+
+# Testing and build artifacts
+coverage/
+dist/
+build/
