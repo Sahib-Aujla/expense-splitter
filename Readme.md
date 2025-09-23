@@ -4,9 +4,10 @@
 ## todo
 - project setup ✅
 - mongodb config ✅
-- next auth setup
+- next auth setup ✅
+- Landing page
 - biconomy account setup
-- test login flow
+
 
 ## Phase 1
 
