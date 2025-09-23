@@ -1,5 +1,13 @@
 # Expense Splitter
 
+
+## todo
+- project setup ✅
+- mongodb config ✅
+- next auth setup
+- biconomy account setup
+- test login flow
+
 ## Phase 1
 
 - User onboarding using google sign in and creation of Smart Account Wallet
