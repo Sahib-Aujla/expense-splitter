@@ -30,9 +30,11 @@ export const authOptions: NextAuthOptions = {
             await connectMongoDb();
             const existingUser = await User.findOne({ email: user.email });
             if (!existingUser) {
-                await User.create({ userId:user.id, email: user.email, scaAddress: null });
+                await User.create({ userId: user.id, email: user.email, scaAddress: null });
             }
             return true;
         }
-    }
+    },
+    session: { strategy: 'jwt', maxAge: 10 * 24 * 60 * 60 },//10 days
+    secret: process.env.NEXTAUTH_SECRET,
 }
