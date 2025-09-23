@@ -5,8 +5,10 @@
 - project setup ✅
 - mongodb config ✅
 - next auth setup ✅
-- Landing page
+- Landing page 
 - biconomy account setup
+
+
 
 
 ## Phase 1
