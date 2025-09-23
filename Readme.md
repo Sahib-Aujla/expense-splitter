@@ -1,6 +1,6 @@
-## Expense Splitter
+# Expense Splitter
 
-# Phase 1
+## Phase 1
 
 - User onboarding using google sign in and creation of Smart Account Wallet
 - DB for user management
@@ -11,6 +11,7 @@
 - user transparency
 
 
+# Project
 expense-splitter/
 ├── app/                          # Next.js project
 │   ├── app/                      # App Router
