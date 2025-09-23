@@ -30,8 +30,11 @@ export const authOptions: NextAuthOptions = {
             await connectMongoDb();
             const existingUser = await User.findOne({ email: user.email });
             if (!existingUser) {
-                await User.create({ userId: user.id, email: user.email, scaAddress: null });
+                const us=await User.create({ userId: user.id, email: user.email, scaAddress: null });
+                console.log({us});
             }
+            console.log({existingUser});
+            
             return true;
         }
     },
