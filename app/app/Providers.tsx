@@ -1,8 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
-
+import {sepolia} from 'viem/chains';
 import { PrivyProvider } from "@privy-io/react-auth";
 
 type ProvidersProps = {
@@ -22,6 +21,7 @@ const Providers = ({ children }: ProvidersProps) => {
             createOnLogin: "users-without-wallets",
           },
         },
+        defaultChain:sepolia
       }}
     >
       {children}
