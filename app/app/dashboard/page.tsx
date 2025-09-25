@@ -1,16 +1,16 @@
 "use client";
-import { signOut } from "next-auth/react";
-
-export default function Home() {
+import { useWallets ,getEmbeddedConnectedWallet} from "@privy-io/react-auth";
+export default function Dashboard() {
+  const { wallets } = useWallets();
+  const wallet=getEmbeddedConnectedWallet(wallets);
+  console.log({ wallets });
   return (
     <div className="p-4">
-      <h1>Landing Page </h1>
-      <button
-        onClick={() => signOut({ redirect: true, callbackUrl: "/" })}
-        className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
-      >
-        Sign in with Google
-      </button>
+      <h1>dashboard </h1>
+      {wallets?.map((a) => (
+        <p>{a.address}</p>
+      ))}
+      <p>{wallet ? wallet.address:"lol"}</p>
     </div>
   );
 }
