@@ -5,9 +5,9 @@
 - project setup ✅
 - mongodb config ✅
 - next auth setup ✅
-- create Smart account
+- create Smart account ✅
 - Landing page 
-- biconomy account setup
+- Dashboard
 
 
 
