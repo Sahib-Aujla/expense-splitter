@@ -10,6 +10,7 @@ type ProvidersProps = {
 };
 
 const Providers = ({ children }: ProvidersProps) => {
+    
   return (
     <PrivyProvider
       appId={process.env.NEXT_PUBLIC_APP_ID!}
