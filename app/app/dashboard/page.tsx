@@ -21,12 +21,13 @@ import { useTheme } from "@/hooks/useTheme";
 
 export default function Dashboard() {
   const { wallets } = useWallets();
-  const { logout, authenticated } = usePrivy();
+  const { logout, authenticated, user } = usePrivy();
   const { theme, toggleTheme } = useTheme();
   const router = useRouter();
   const wallet = getEmbeddedConnectedWallet(wallets);
   console.log({ wallets });
-  
+  console.log({ user });
+
   useEffect(() => {
     if (!authenticated) {
       router.replace("/");
@@ -35,30 +36,26 @@ export default function Dashboard() {
 
   useEffect(() => {
     const createOrUpdateUser = async () => {
-      if (authenticated && wallets.length > 0) {
-        const w = wallets[0];
-
+      if (authenticated && user && wallets.length > 0) {
         try {
           const resp = await fetch("/api/users/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              privyUserId: null, // if available from usePrivy, pass it here
-              email: null, // if signed in with email
-              embeddedWallet: wallet,
-              address: w.address,
-              walletClientType: w.walletClientType,
+              privyUserId: user.id, // Privy unique ID
+              email: user.email?.address || null,
+              wallets, // pass the connected wallets array
             }),
           });
           const data = await resp.json();
-          console.log(data);
+          console.log("User saved:", data);
         } catch (e) {
-          console.log(e);
+          console.error(e);
         }
       }
     };
     createOrUpdateUser();
-  }, [authenticated, wallets]);
+  }, [authenticated, wallets, user]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-200 transition-colors duration-300">
