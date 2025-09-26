@@ -6,8 +6,10 @@
 - mongodb config ✅
 - next auth setup ✅
 - create Smart account ✅
-- Landing page 
-- Dashboard
+- Landing page  ✅
+- Dashboard (dummy)
+- Create Groups
+
 
 
 
