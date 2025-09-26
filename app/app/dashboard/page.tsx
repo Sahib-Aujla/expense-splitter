@@ -147,6 +147,7 @@ export default function Dashboard() {
               title: "Create Group",
               icon: Users,
               desc: "Start a new group and invite friends to share expenses.",
+              link: "/dashboard/create",
             },
             {
               title: "Add Expense",
@@ -176,6 +177,11 @@ export default function Dashboard() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
+              onClick={() => {
+                if (feature.link) {
+                  router.replace(feature.link);
+                }
+              }}
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-500 to-pink-500 text-white mb-4 shadow-lg group-hover:scale-110 transition">
                 <feature.icon size={24} />
