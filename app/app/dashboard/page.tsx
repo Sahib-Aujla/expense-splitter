@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import {
   Sun,
   Moon,
-  LogIn,
   Users,
   Coins,
   CreditCard,
@@ -45,7 +44,7 @@ export default function Dashboard() {
         <div className="flex items-center space-x-4">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 shadow hover:shadow-lg transition"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 shadow hover:shadow-lg transition cursor-pointer"
           >
             {theme === "dark" ? (
               <Sun className="w-5 h-5 text-yellow-400" />
