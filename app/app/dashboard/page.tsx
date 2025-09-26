@@ -24,15 +24,41 @@ export default function Dashboard() {
   const { logout, authenticated } = usePrivy();
   const { theme, toggleTheme } = useTheme();
   const router = useRouter();
-
+  const wallet = getEmbeddedConnectedWallet(wallets);
+  console.log({ wallets });
+  
   useEffect(() => {
     if (!authenticated) {
       router.replace("/");
     }
   }, [authenticated]);
 
-  const wallet = getEmbeddedConnectedWallet(wallets);
-  console.log({wallets});
+  useEffect(() => {
+    const createOrUpdateUser = async () => {
+      if (authenticated && wallets.length > 0) {
+        const w = wallets[0];
+
+        try {
+          const resp = await fetch("/api/users/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              privyUserId: null, // if available from usePrivy, pass it here
+              email: null, // if signed in with email
+              embeddedWallet: wallet,
+              address: w.address,
+              walletClientType: w.walletClientType,
+            }),
+          });
+          const data = await resp.json();
+          console.log(data);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    };
+    createOrUpdateUser();
+  }, [authenticated, wallets]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-200 transition-colors duration-300">

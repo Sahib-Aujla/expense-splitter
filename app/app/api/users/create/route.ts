@@ -5,7 +5,7 @@ import User from "@/lib/db/models/User.model";
 export async function POST(req: Request) {
     try {
         await connectMongoDb();
-        const { address, walletClientType, email, privyUserId } = await req.json();
+        const { address, walletClientType, email, privyUserId, embeddedWallet } = await req.json();
 
         // prefer Privy userId if available, else wallet address
         const userId = privyUserId || address.toLowerCase();
@@ -23,6 +23,7 @@ export async function POST(req: Request) {
                         linkedAt: new Date(),
                     },
                 ],
+                embeddedWallet: embeddedWallet || null
             });
         } else {
             // Update wallet info if it's new
