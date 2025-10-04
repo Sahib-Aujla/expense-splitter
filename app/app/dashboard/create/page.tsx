@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
@@ -139,7 +139,7 @@ export default function CreateGroup() {
               <div className="absolute top-full left-0 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl mt-1 shadow-lg z-50">
                 {searchResults.map((r) => (
                   <div
-                    key={r.id}
+                    key={r.email}
                     className="px-4 py-2 hover:bg-indigo-500 hover:text-white cursor-pointer rounded-xl flex justify-between"
                     onClick={() => selectSearchResult(i, r)}
                   >

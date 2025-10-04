@@ -22,11 +22,10 @@ export async function GET(req: Request) {
         })
             .limit(5) // limit number of results
             .lean();
-
         const results = users.map((u) => ({
             id: u.userId,
-            email: u.email?.address || null,
-            wallet: u.externalWallets[0]?.address || null,
+            email: u.email || null,
+            wallet: u.externalWallets?.[0]?.address || null,
         }));
 
         return NextResponse.json(results);
